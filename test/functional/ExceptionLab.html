@@ -42,20 +42,23 @@
         }
 
         function dumpExceptionAnonymous() {
-            dumpException((function(x) {
+            (function(x) {
                 try {
                     x.undef();
                     return null;
                 } catch (ex) {
-                    return ex;
+                  dumpException(ex);
                 }
-            })(null));
+            })(null);
         }
 
         function dumpExceptionInEval() {
             try {
                 //eval("x.undef()");
-                eval("getExceptionProps()");
+
+                  eval("eval('getExceptionProps()')");
+
+
             } catch (ex) {
                 dumpException(ex);
             }
